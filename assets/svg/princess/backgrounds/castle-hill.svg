@@ -27,9 +27,8 @@
       <line x1="330" y1="365" x2="470" y2="365"/>
       <line x1="330" y1="400" x2="470" y2="400"/>
     </g>
-    <rect x="360" y="360" width="35" height="90" fill="#7A5C9E"/>
-    <rect x="405" y="360" width="35" height="90" fill="#7A5C9E"/>
-    <path d="M360 360 Q377 345 395 360" fill="none" stroke="#5A3E7A" stroke-width="3"/>
+    <path d="M366 364 L366 336 Q366 326 377 326 Q388 326 388 336 L388 364 Z" fill="#7A5C9E"/>
+    <path d="M412 364 L412 336 Q412 326 423 326 Q434 326 434 336 L434 364 Z" fill="#7A5C9E"/>
     <rect x="250" y="330" width="60" height="120" fill="#E3C3EC"/>
     <polygon points="250,330 280,285 310,330" fill="#D46FB8"/>
     <rect x="270" y="360" width="20" height="24" rx="10" fill="#7A5C9E"/>
