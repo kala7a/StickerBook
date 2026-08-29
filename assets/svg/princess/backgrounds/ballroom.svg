@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#FBEFE0"/>
+  <rect y="0" width="800" height="380" fill="#F6DDBB"/>
+  <g>
+    <path d="M90 60 Q90 -10 170 -10 Q250 -10 250 60 L250 260 L90 260 Z" fill="#FFF7EA" stroke="#E3B77C" stroke-width="6"/>
+    <path d="M330 60 Q330 -10 410 -10 Q490 -10 490 60 L490 260 L330 260 Z" fill="#FFF7EA" stroke="#E3B77C" stroke-width="6"/>
+    <path d="M570 60 Q570 -10 650 -10 Q730 -10 730 60 L730 260 L570 260 Z" fill="#FFF7EA" stroke="#E3B77C" stroke-width="6"/>
+    <rect x="90" y="150" width="160" height="6" fill="#E3B77C"/>
+    <rect x="330" y="150" width="160" height="6" fill="#E3B77C"/>
+    <rect x="570" y="150" width="160" height="6" fill="#E3B77C"/>
+  </g>
+  <rect y="380" width="800" height="220" fill="#EAD4A8"/>
+  <g stroke="#D8BC85" stroke-width="2">
+    <line x1="0" y1="420" x2="800" y2="420"/>
+    <line x1="0" y1="460" x2="800" y2="460"/>
+    <line x1="0" y1="500" x2="800" y2="500"/>
+    <line x1="0" y1="540" x2="800" y2="540"/>
+    <line x1="0" y1="580" x2="800" y2="580"/>
+    <line x1="80" y1="380" x2="80" y2="600"/>
+    <line x1="200" y1="380" x2="200" y2="600"/>
+    <line x1="320" y1="380" x2="320" y2="600"/>
+    <line x1="440" y1="380" x2="440" y2="600"/>
+    <line x1="560" y1="380" x2="560" y2="600"/>
+    <line x1="680" y1="380" x2="680" y2="600"/>
+  </g>
+  <polygon points="330,600 470,600 430,380 370,380" fill="#D6425F"/>
+</svg>

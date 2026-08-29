@@ -1,0 +1,314 @@
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #f2f2f2;
+  overscroll-behavior: none;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: #ffffff;
+  border-bottom: 2px solid #ececec;
+  flex-wrap: wrap;
+}
+
+.app-title {
+  font-size: 1.15rem;
+  margin: 0;
+  color: #444;
+  white-space: nowrap;
+}
+
+.category-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.category-tab {
+  min-height: 44px;
+  padding: 6px 18px;
+  border-radius: 22px;
+  border: 2px solid #ddd;
+  background: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.category-tab.active {
+  background: #ffd54a;
+  border-color: #e8a83a;
+  font-weight: bold;
+}
+
+.app-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+@media (min-width: 900px) {
+  .app-body {
+    flex-direction: row;
+  }
+}
+
+.tray-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 10px;
+  background: #ffffff;
+  border-bottom: 2px solid #ececec;
+}
+
+@media (min-width: 900px) {
+  .tray-panel {
+    width: 230px;
+    flex: 0 0 230px;
+    border-bottom: none;
+    border-right: 2px solid #ececec;
+    overflow-y: auto;
+  }
+}
+
+.tray-label {
+  font-size: 0.8rem;
+  margin: 2px 0;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tray {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+@media (min-width: 900px) {
+  .tray {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}
+
+.tray-thumb {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  border: 2px solid #e2e2e2;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.tray-thumb:active {
+  transform: scale(0.94);
+}
+
+.tray-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.canvas-panel {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 14px;
+  min-height: 0;
+  overflow: auto;
+}
+
+.canvas-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+}
+
+.canvas-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #ddd;
+  border-radius: 14px;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.12);
+  touch-action: none;
+}
+
+/* Clipping lives on this background-only wrapper (not .canvas-stage) so that
+   sticker resize/rotate handles near an edge or on a scaled-up sticker never
+   get clipped out of pointer-event range. */
+.canvas-background-clip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.canvas-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sticker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+  transform-origin: 50% 50%;
+}
+
+.sticker .sticker-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sticker.selected {
+  outline: 3px dashed #4fc3e8;
+  outline-offset: 6px;
+  border-radius: 6px;
+}
+
+.sticker-handle {
+  display: none;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #4fc3e8;
+  touch-action: none;
+}
+
+.sticker.selected .sticker-handle {
+  display: block;
+}
+
+.sticker-handle-resize {
+  right: -15px;
+  bottom: -15px;
+  cursor: nwse-resize;
+}
+
+.sticker-handle-rotate {
+  left: 50%;
+  top: -46px;
+  margin-left: -15px;
+  cursor: grab;
+}
+
+.sticker-handle-rotate-line {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: -16px;
+  width: 2px;
+  height: 16px;
+  background: #4fc3e8;
+}
+
+.sticker.selected .sticker-handle-rotate-line {
+  display: block;
+}
+
+.floating-toolbar {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 6px;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.18);
+  transform: translate(0, -50%);
+  z-index: 9999;
+}
+
+.floating-toolbar[hidden] {
+  display: none;
+}
+
+.floating-toolbar button {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 2px solid #e2e2e2;
+  background: #fafafa;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+.side-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: #fff;
+  border-top: 2px solid #ececec;
+}
+
+@media (min-width: 900px) {
+  .side-toolbar {
+    width: 170px;
+    flex: 0 0 170px;
+    flex-direction: column;
+    border-top: none;
+    border-left: 2px solid #ececec;
+  }
+}
+
+.export-btn {
+  min-height: 48px;
+  padding: 10px 22px;
+  border-radius: 24px;
+  border: none;
+  background: #7ed957;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.export-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}

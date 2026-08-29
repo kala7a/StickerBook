@@ -1,0 +1,18 @@
+{
+  "id": "princess",
+  "label": "Princess",
+  "backgrounds": [
+    { "id": "castle-hill", "label": "Castle Hill", "src": "assets/svg/princess/backgrounds/castle-hill.svg" },
+    { "id": "ballroom", "label": "Ballroom", "src": "assets/svg/princess/backgrounds/ballroom.svg" }
+  ],
+  "elements": [
+    { "id": "crown", "label": "Crown", "src": "assets/svg/princess/elements/crown.svg", "defaultWidth": 130, "defaultHeight": 100 },
+    { "id": "wand", "label": "Wand", "src": "assets/svg/princess/elements/wand.svg", "defaultWidth": 90, "defaultHeight": 150 },
+    { "id": "princess-figure", "label": "Princess", "src": "assets/svg/princess/elements/princess-figure.svg", "defaultWidth": 120, "defaultHeight": 170 },
+    { "id": "castle-tower", "label": "Tower", "src": "assets/svg/princess/elements/castle-tower.svg", "defaultWidth": 110, "defaultHeight": 170 },
+    { "id": "horse", "label": "Horse", "src": "assets/svg/princess/elements/horse.svg", "defaultWidth": 170, "defaultHeight": 130 },
+    { "id": "tiara", "label": "Tiara", "src": "assets/svg/princess/elements/tiara.svg", "defaultWidth": 110, "defaultHeight": 80 },
+    { "id": "carriage", "label": "Carriage", "src": "assets/svg/princess/elements/carriage.svg", "defaultWidth": 170, "defaultHeight": 130 },
+    { "id": "rose", "label": "Rose", "src": "assets/svg/princess/elements/rose.svg", "defaultWidth": 90, "defaultHeight": 150 }
+  ]
+}

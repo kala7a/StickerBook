@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>StickerBook</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1 class="app-title">StickerBook</h1>
+      <div class="category-tabs" id="category-tabs"></div>
+    </header>
+
+    <div class="app-body">
+      <aside class="tray-panel">
+        <section class="tray-section">
+          <h2 class="tray-label">Backgrounds</h2>
+          <div class="tray tray-backgrounds" id="backgrounds-tray"></div>
+        </section>
+        <section class="tray-section">
+          <h2 class="tray-label">Stickers</h2>
+          <div class="tray tray-elements" id="elements-tray"></div>
+        </section>
+      </aside>
+
+      <main class="canvas-panel">
+        <div class="canvas-wrap" id="canvas-wrap">
+          <div class="canvas-stage" id="canvas-stage">
+            <div class="canvas-background-clip">
+              <img class="canvas-background" id="canvas-background" alt="background" draggable="false">
+            </div>
+          </div>
+          <div class="floating-toolbar" id="floating-toolbar" hidden>
+            <button type="button" id="btn-front" title="Bring to front">⬆</button>
+            <button type="button" id="btn-back" title="Send to back">⬇</button>
+            <button type="button" id="btn-delete" title="Delete">🗑</button>
+          </div>
+        </div>
+      </main>
+
+      <aside class="side-toolbar">
+        <button type="button" id="btn-export" class="export-btn">⬇ Save Picture</button>
+      </aside>
+    </div>
+  </div>
+
+  <script src="js/manifestLoader.js"></script>
+  <script src="js/selection.js"></script>
+  <script src="js/gestures.js"></script>
+  <script src="js/sticker.js"></script>
+  <script src="js/canvas.js"></script>
+  <script src="js/toolbar.js"></script>
+  <script src="js/categoryPicker.js"></script>
+  <script src="js/exportPng.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
