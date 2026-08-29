@@ -8,6 +8,24 @@
     <rect x="90" y="150" width="160" height="6" fill="#E3B77C"/>
     <rect x="330" y="150" width="160" height="6" fill="#E3B77C"/>
     <rect x="570" y="150" width="160" height="6" fill="#E3B77C"/>
+    <rect x="167" y="0" width="6" height="260" fill="#E3B77C" opacity="0.6"/>
+    <rect x="407" y="0" width="6" height="260" fill="#E3B77C" opacity="0.6"/>
+    <rect x="647" y="0" width="6" height="260" fill="#E3B77C" opacity="0.6"/>
+  </g>
+  <g>
+    <circle cx="60" cy="140" r="10" fill="#F0C93A"/>
+    <path d="M60 150 Q60 175 60 190" stroke="#8A6D3A" stroke-width="3"/>
+    <path d="M45 190 Q60 205 75 190" fill="none" stroke="#8A6D3A" stroke-width="3"/>
+    <circle cx="740" cy="140" r="10" fill="#F0C93A"/>
+    <path d="M740 150 Q740 175 740 190" stroke="#8A6D3A" stroke-width="3"/>
+    <path d="M725 190 Q740 205 755 190" fill="none" stroke="#8A6D3A" stroke-width="3"/>
+  </g>
+  <g>
+    <line x1="400" y1="0" x2="400" y2="45" stroke="#C99418" stroke-width="3"/>
+    <path d="M370 45 Q400 30 430 45 Q420 65 400 60 Q380 65 370 45 Z" fill="#F0C93A" stroke="#C99418" stroke-width="2"/>
+    <circle cx="382" cy="50" r="4" fill="#4FC3E8"/>
+    <circle cx="400" cy="55" r="4" fill="#EC5B8C"/>
+    <circle cx="418" cy="50" r="4" fill="#7ED957"/>
   </g>
   <rect y="380" width="800" height="220" fill="#EAD4A8"/>
   <g stroke="#D8BC85" stroke-width="2">
@@ -24,4 +42,9 @@
     <line x1="680" y1="380" x2="680" y2="600"/>
   </g>
   <polygon points="330,600 470,600 430,380 370,380" fill="#D6425F"/>
+  <polygon points="345,600 455,600 422,392 378,392" fill="#B8324A"/>
+  <g stroke="#F0C93A" stroke-width="2" opacity="0.6">
+    <line x1="345" y1="600" x2="422" y2="392"/>
+    <line x1="455" y1="600" x2="378" y2="392"/>
+  </g>
 </svg>
