@@ -9,7 +9,7 @@
 <body>
   <div class="app">
     <header class="app-header">
-      <h1 class="app-title">StickerBook <span class="app-version">v4</span></h1>
+      <h1 class="app-title">StickerBook <span class="app-version">v5</span></h1>
       <div class="category-tabs" id="category-tabs"></div>
     </header>
 
@@ -34,8 +34,18 @@
           </div>
           <div class="floating-toolbar" id="floating-toolbar" hidden>
             <button type="button" id="btn-done" class="btn-done" title="Done">✓</button>
-            <button type="button" id="btn-front" title="Bring to front">⬆</button>
-            <button type="button" id="btn-back" title="Send to back">⬇</button>
+            <button type="button" id="btn-front" title="Bring to front">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                <rect x="2" y="2" width="14" height="14" rx="2" fill="#fff" stroke="#999" stroke-width="1.5"/>
+                <rect x="9" y="9" width="14" height="14" rx="2" fill="#E23B5E" stroke="#B8324A" stroke-width="1.5"/>
+              </svg>
+            </button>
+            <button type="button" id="btn-back" title="Send to back">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                <rect x="2" y="2" width="14" height="14" rx="2" fill="#E23B5E" stroke="#B8324A" stroke-width="1.5"/>
+                <rect x="9" y="9" width="14" height="14" rx="2" fill="#fff" stroke="#999" stroke-width="1.5"/>
+              </svg>
+            </button>
             <button type="button" id="btn-delete" title="Delete">🗑</button>
           </div>
         </div>

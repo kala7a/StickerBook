@@ -231,9 +231,9 @@ html, body {
 }
 
 .sticker-handle-resize {
-  right: -32px;
+  left: -32px;
   bottom: -32px;
-  cursor: nwse-resize;
+  cursor: nesw-resize;
 }
 
 .sticker-handle-rotate {
@@ -282,6 +282,9 @@ html, body {
   background: #fafafa;
   font-size: 1.15rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .floating-toolbar .btn-done {
