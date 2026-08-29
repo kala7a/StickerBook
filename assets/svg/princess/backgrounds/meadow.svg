@@ -25,9 +25,9 @@
   <path d="M0 420 Q400 330 800 420 L800 600 L0 600 Z" fill="#B7E38A"/>
   <path d="M0 460 Q400 390 800 460 L800 600 L0 600 Z" fill="#9BD671"/>
 
-  <path d="M340 600 Q370 520 325 470 Q285 425 335 395 Q375 370 355 330"
+  <path d="M340 600 Q365 530 330 480 Q300 440 340 410"
         fill="none" stroke="#C9A46A" stroke-width="40" stroke-linecap="round"/>
-  <path d="M340 600 Q370 520 325 470 Q285 425 335 395 Q375 370 355 330"
+  <path d="M340 600 Q365 530 330 480 Q300 440 340 410"
         fill="none" stroke="#E3C68A" stroke-width="30" stroke-linecap="round"/>
 
   <g>
