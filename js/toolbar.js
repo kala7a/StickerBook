@@ -7,6 +7,9 @@ StickerBook.Toolbar = (function () {
     floatingEl = els.floating;
     stageWrapEl = els.stageWrap;
 
+    els.done.addEventListener('click', function () {
+      StickerBook.Selection.clear();
+    });
     els.front.addEventListener('click', function () {
       const id = StickerBook.Selection.get();
       if (id) StickerBook.Canvas.bringToFront(id);
