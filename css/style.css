@@ -224,8 +224,8 @@ html, body {
 }
 
 .sticker-handle-resize {
-  right: -15px;
-  bottom: -15px;
+  right: -32px;
+  bottom: -32px;
   cursor: nwse-resize;
 }
 
