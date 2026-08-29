@@ -22,6 +22,13 @@ StickerBook.Toolbar = (function () {
     els.export.addEventListener('click', function () {
       StickerBook.ExportPng.exportCanvas();
     });
+    els.newDrawing.addEventListener('click', function () {
+      const state = StickerBook.Canvas.getState();
+      if (state.stickers.length === 0) return;
+      if (window.confirm('Start a new drawing? This will clear your current picture.')) {
+        StickerBook.Canvas.clearStickers();
+      }
+    });
   }
 
   function updateFloatingPosition(stickerData) {

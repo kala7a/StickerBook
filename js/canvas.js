@@ -101,6 +101,16 @@ StickerBook.Canvas = (function () {
     return state.stickers.find(function (s) { return s.id === id; }) || null;
   }
 
+  function clearStickers() {
+    StickerBook.Selection.clear();
+    Object.keys(stickerEls).forEach(function (id) {
+      stickerEls[id].remove();
+    });
+    stickerEls = {};
+    state.stickers = [];
+    state.nextZ = 1;
+  }
+
   function bringToFront(id) {
     reorder(id, true);
   }
@@ -136,6 +146,7 @@ StickerBook.Canvas = (function () {
     setBackground: setBackground,
     addSticker: addSticker,
     removeSticker: removeSticker,
+    clearStickers: clearStickers,
     getSticker: getSticker,
     bringToFront: bringToFront,
     sendToBack: sendToBack,

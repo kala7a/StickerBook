@@ -13,6 +13,7 @@ window.StickerBook = window.StickerBook || {};
       back: document.getElementById('btn-back'),
       delete: document.getElementById('btn-delete'),
       export: document.getElementById('btn-export'),
+      newDrawing: document.getElementById('btn-new'),
       stageWrap: document.getElementById('canvas-wrap')
     });
 
