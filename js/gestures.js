@@ -94,27 +94,46 @@ StickerBook.Gestures = (function () {
   // selected, the whole canvas is its gesture surface until it's
   // deselected, deleted, or a different sticker is tapped.
   function attachStage(stageEl, getActive, callbacks) {
+    const TAP_THRESHOLD = 10; // px of screen movement still counted as "didn't move"
+
     const activePointers = new Map();
     let mode = null; // 'drag' | 'pinch'
     let dragState = null;
     let pinchState = null;
     let activeId = null;
+    // A fresh touch landing on a *different*, unselected sticker doesn't
+    // switch to it right away — that's too easy to trigger by accident while
+    // repositioning the sticker that's already selected. Instead it keeps
+    // manipulating the current selection, and only becomes a switch if this
+    // same touch turns out to have been a plain tap (released again with
+    // barely any movement) rather than a drag.
+    let pendingSwitchId = null;
+    let pendingSwitchStart = null;
 
     stageEl.addEventListener('pointerdown', function (e) {
       if (e.target.closest('.sticker-handle')) return;
 
       if (activePointers.size === 0) {
-        // Fresh gesture: tapping a sticker that isn't the current selection
-        // switches the selection to it (and this same touch starts moving
-        // it). Tapping empty canvas or the already-selected sticker just
-        // continues manipulating whatever is currently selected.
         const stickerEl = e.target.closest('.sticker');
-        if (stickerEl && stickerEl.dataset.id !== StickerBook.Selection.get()) {
-          StickerBook.Selection.select(stickerEl.dataset.id);
+        const currentSelection = StickerBook.Selection.get();
+
+        if (!currentSelection) {
+          // Nothing selected yet, so there's nothing to accidentally
+          // interrupt — tapping a sticker selects it immediately.
+          if (stickerEl) StickerBook.Selection.select(stickerEl.dataset.id);
+          pendingSwitchId = null;
+          pendingSwitchStart = null;
+        } else if (stickerEl && stickerEl.dataset.id !== currentSelection) {
+          pendingSwitchId = stickerEl.dataset.id;
+          pendingSwitchStart = { x: e.clientX, y: e.clientY };
+        } else {
+          pendingSwitchId = null;
+          pendingSwitchStart = null;
         }
-        const active = getActive();
-        if (!active) return;
-        activeId = active.id;
+
+        const activeAfterTap = getActive();
+        if (!activeAfterTap) return;
+        activeId = activeAfterTap.id;
       } else if (activeId === null) {
         return;
       }
@@ -133,6 +152,8 @@ StickerBook.Gestures = (function () {
       if (activePointers.size === 1) {
         beginDrag(e.pointerId, active);
       } else if (activePointers.size === 2) {
+        pendingSwitchId = null; // definitely not a plain tap anymore
+        pendingSwitchStart = null;
         beginPinch(active);
       }
     });
@@ -156,8 +177,18 @@ StickerBook.Gestures = (function () {
 
     function endPointer(e) {
       if (!activePointers.has(e.pointerId)) return;
+      const lastPos = activePointers.get(e.pointerId);
       activePointers.delete(e.pointerId);
+
       if (activePointers.size === 0) {
+        if (pendingSwitchId && pendingSwitchStart) {
+          const moved = distance(lastPos.x, lastPos.y, pendingSwitchStart.x, pendingSwitchStart.y);
+          if (moved < TAP_THRESHOLD) {
+            StickerBook.Selection.select(pendingSwitchId);
+          }
+        }
+        pendingSwitchId = null;
+        pendingSwitchStart = null;
         mode = null;
         dragState = null;
         pinchState = null;
