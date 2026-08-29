@@ -1,0 +1,18 @@
+{
+  "id": "construction",
+  "label": "Construction",
+  "backgrounds": [
+    { "id": "worksite", "label": "Worksite", "src": "assets/svg/construction/backgrounds/worksite.svg" },
+    { "id": "road", "label": "Road", "src": "assets/svg/construction/backgrounds/road.svg" }
+  ],
+  "elements": [
+    { "id": "dump-truck", "label": "Dump Truck", "src": "assets/svg/construction/elements/dump-truck.svg", "defaultWidth": 170, "defaultHeight": 120 },
+    { "id": "crane", "label": "Crane", "src": "assets/svg/construction/elements/crane.svg", "defaultWidth": 140, "defaultHeight": 180 },
+    { "id": "traffic-cone", "label": "Cone", "src": "assets/svg/construction/elements/traffic-cone.svg", "defaultWidth": 90, "defaultHeight": 130 },
+    { "id": "hard-hat", "label": "Hard Hat", "src": "assets/svg/construction/elements/hard-hat.svg", "defaultWidth": 130, "defaultHeight": 100 },
+    { "id": "house-frame", "label": "House Frame", "src": "assets/svg/construction/elements/house-frame.svg", "defaultWidth": 170, "defaultHeight": 150 },
+    { "id": "digger", "label": "Digger", "src": "assets/svg/construction/elements/digger.svg", "defaultWidth": 170, "defaultHeight": 130 },
+    { "id": "cement-mixer", "label": "Cement Mixer", "src": "assets/svg/construction/elements/cement-mixer.svg", "defaultWidth": 170, "defaultHeight": 130 },
+    { "id": "barrier", "label": "Barrier", "src": "assets/svg/construction/elements/barrier.svg", "defaultWidth": 150, "defaultHeight": 90 }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "categories": [
+    {
+      "id": "princess",
+      "label": "Princess",
+      "icon": "assets/svg/princess/elements/crown.svg",
+      "manifest": "assets/svg/princess/manifest.json"
+    },
+    {
+      "id": "construction",
+      "label": "Construction",
+      "icon": "assets/svg/construction/elements/dump-truck.svg",
+      "manifest": "assets/svg/construction/manifest.json"
+    }
+  ]
+}
