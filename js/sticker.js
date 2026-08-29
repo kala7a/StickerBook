@@ -27,10 +27,10 @@ StickerBook.Sticker = (function () {
     rotateHandle.title = 'Rotate';
     wrapper.appendChild(rotateHandle);
 
-    StickerBook.Gestures.attach(
+    StickerBook.Gestures.attachHandles(
       wrapper,
       data,
-      { body: wrapper, resizeHandle: resizeHandle, rotateHandle: rotateHandle },
+      { resizeHandle: resizeHandle, rotateHandle: rotateHandle },
       callbacks
     );
 
