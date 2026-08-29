@@ -34,7 +34,7 @@ StickerBook.Toolbar = (function () {
     });
   }
 
-  function updateFloatingPosition(stickerData) {
+  function updateFloatingPosition(stickerData, wrapperEl) {
     if (!stickerData) {
       floatingEl.hidden = true;
       return;
@@ -54,8 +54,9 @@ StickerBook.Toolbar = (function () {
     const toolbarWidth = floatingEl.getBoundingClientRect().width || 54;
 
     const rightSideX = stageRect.left + (stickerData.x + halfDiagonal + gap) * scale;
+    const flipped = rightSideX + toolbarWidth > wrapRect.right;
     let leftPx;
-    if (rightSideX + toolbarWidth > wrapRect.right) {
+    if (flipped) {
       // Placing it on the sticker's right would run off the edge of the
       // canvas (or overlap the side toolbar) — flip to the left side, still
       // reachable, instead.
@@ -68,6 +69,14 @@ StickerBook.Toolbar = (function () {
     const top = stageRect.top - wrapRect.top + stickerData.y * scale;
     floatingEl.style.left = leftPx + 'px';
     floatingEl.style.top = Math.max(0, top) + 'px';
+
+    // The resize handle normally sits at the sticker's bottom-left specifically
+    // to stay clear of this toolbar on the right — so when the toolbar flips
+    // to the left instead, the handle needs to flip to the bottom-right or
+    // they'd collide there instead.
+    if (wrapperEl) {
+      wrapperEl.classList.toggle('controls-flipped', flipped);
+    }
   }
 
   return { init: init, updateFloatingPosition: updateFloatingPosition };
