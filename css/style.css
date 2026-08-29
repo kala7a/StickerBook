@@ -360,3 +360,68 @@ html, body {
   font-weight: bold;
   cursor: pointer;
 }
+
+/* Phones in landscape are short but not necessarily >=900px wide (900px is
+   sized for tablets/PCs), so a height-based check catches them on their own:
+   tablets/PCs stay well above 500px tall even sideways, phones don't. Reuses
+   the same side-by-side layout as the desktop breakpoint above so the tray
+   (backgrounds/stickers) sits on the left and the canvas keeps the rest of
+   the width on the right, instead of stacking and squeezing the canvas into
+   a sliver of the limited height. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .app-header {
+    padding: 4px 10px;
+  }
+
+  .app-title {
+    font-size: 1rem;
+  }
+
+  .category-tab {
+    min-height: 36px;
+    padding: 4px 14px;
+  }
+
+  .app-body {
+    flex-direction: row;
+  }
+
+  .tray-panel {
+    width: 160px;
+    flex: 0 0 160px;
+    border-bottom: none;
+    border-right: 2px solid #ececec;
+    overflow-y: auto;
+  }
+
+  .tray {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+
+  .tray-thumb {
+    width: 52px;
+    height: 52px;
+  }
+
+  .canvas-panel {
+    padding: 8px;
+  }
+
+  .side-toolbar {
+    width: 96px;
+    flex: 0 0 96px;
+    flex-direction: column;
+    border-top: none;
+    border-left: 2px solid #ececec;
+    padding: 8px 6px;
+    gap: 8px;
+  }
+
+  .export-btn,
+  .new-btn {
+    min-height: 44px;
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+}
