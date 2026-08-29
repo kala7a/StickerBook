@@ -20,12 +20,10 @@ StickerBook.Canvas = (function () {
     stageEl.dataset.logicalWidth = String(LOGICAL_WIDTH);
     stageEl.dataset.logicalHeight = String(LOGICAL_HEIGHT);
 
-    stageEl.addEventListener('pointerdown', function (e) {
-      if (!e.target.closest('.sticker')) {
-        StickerBook.Selection.clear();
-      }
-    });
-
+    // Tapping empty canvas no longer deselects — a stray finger while
+    // reaching for a pinch gesture used to lose the selection and its
+    // handles. Selecting a different sticker (or the Done/Delete/New
+    // Drawing buttons) are now the only ways to change or clear it.
     StickerBook.Selection.init(function (selectedId) {
       Object.keys(stickerEls).forEach(function (id) {
         stickerEls[id].classList.toggle('selected', id === selectedId);

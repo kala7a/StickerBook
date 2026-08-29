@@ -9,6 +9,7 @@ window.StickerBook = window.StickerBook || {};
 
     StickerBook.Toolbar.init({
       floating: document.getElementById('floating-toolbar'),
+      done: document.getElementById('btn-done'),
       front: document.getElementById('btn-front'),
       back: document.getElementById('btn-back'),
       delete: document.getElementById('btn-delete'),

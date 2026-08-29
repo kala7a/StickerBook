@@ -19,6 +19,7 @@ StickerBook.Gestures = (function () {
     let mode = null; // 'drag' | 'pinch'
     let dragState = null;
     let pinchState = null;
+    let stageSecondFingerListener = null;
 
     els.body.addEventListener('pointerdown', function (e) {
       if (e.target === els.resizeHandle || e.target === els.rotateHandle) return;
@@ -37,10 +38,48 @@ StickerBook.Gestures = (function () {
 
       if (activePointers.size === 1) {
         beginDrag(e.pointerId);
+        // A sticker is small, so asking a kid to land a *second* finger
+        // inside it too (for pinch-to-resize) is unreliable. Once the first
+        // finger is confirmed on the sticker, accept a second finger
+        // anywhere on the canvas as the pinch partner.
+        listenForSecondFingerOnStage();
       } else if (activePointers.size === 2) {
         beginPinch();
       }
     });
+
+    function listenForSecondFingerOnStage() {
+      if (stageSecondFingerListener) return;
+      const stage = wrapperEl.closest('.canvas-stage');
+      if (!stage) return;
+      stageSecondFingerListener = function (e) {
+        if (mode !== 'drag' || activePointers.size !== 1 || activePointers.has(e.pointerId)) return;
+        // Don't steal a touch meant for a different sticker or a handle.
+        if (e.target.closest('.sticker-handle')) return;
+        const otherSticker = e.target.closest('.sticker');
+        if (otherSticker && otherSticker !== wrapperEl) return;
+
+        e.preventDefault();
+        // Redirect this pointer's future events to the sticker itself (not
+        // the stage) so the existing body pointermove/pointerup handlers
+        // pick it up no matter where on the canvas it actually landed.
+        try {
+          wrapperEl.setPointerCapture(e.pointerId);
+        } catch (err) {
+          /* ignore */
+        }
+        activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        beginPinch();
+      };
+      stage.addEventListener('pointerdown', stageSecondFingerListener);
+    }
+
+    function stopListeningForSecondFingerOnStage() {
+      if (!stageSecondFingerListener) return;
+      const stage = wrapperEl.closest('.canvas-stage');
+      if (stage) stage.removeEventListener('pointerdown', stageSecondFingerListener);
+      stageSecondFingerListener = null;
+    }
 
     els.body.addEventListener('pointermove', function (e) {
       if (!activePointers.has(e.pointerId)) return;
@@ -63,6 +102,7 @@ StickerBook.Gestures = (function () {
         mode = null;
         dragState = null;
         pinchState = null;
+        stopListeningForSecondFingerOnStage();
       } else if (activePointers.size === 1 && mode === 'pinch') {
         // Dropped from two fingers to one: resume dragging from the
         // remaining finger's current position so the sticker doesn't jump.
