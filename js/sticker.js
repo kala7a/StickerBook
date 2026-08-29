@@ -16,6 +16,13 @@ StickerBook.Sticker = (function () {
     const resizeHandle = document.createElement('div');
     resizeHandle.className = 'sticker-handle sticker-handle-resize';
     resizeHandle.title = 'Resize';
+    resizeHandle.innerHTML =
+      '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#3A85B8" ' +
+      'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<line x1="7" y1="17" x2="17" y2="7"></line>' +
+      '<polyline points="17 13 17 7 11 7"></polyline>' +
+      '<polyline points="7 11 7 17 13 17"></polyline>' +
+      '</svg>';
     wrapper.appendChild(resizeHandle);
 
     const rotateLine = document.createElement('div');
@@ -25,6 +32,12 @@ StickerBook.Sticker = (function () {
     const rotateHandle = document.createElement('div');
     rotateHandle.className = 'sticker-handle sticker-handle-rotate';
     rotateHandle.title = 'Rotate';
+    rotateHandle.innerHTML =
+      '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#3A85B8" ' +
+      'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<polyline points="23 4 23 10 17 10"></polyline>' +
+      '<path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>' +
+      '</svg>';
     wrapper.appendChild(rotateHandle);
 
     StickerBook.Gestures.attachHandles(
