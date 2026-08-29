@@ -3,7 +3,8 @@
   "label": "Princess",
   "backgrounds": [
     { "id": "castle-hill", "label": "Castle Hill", "src": "assets/svg/princess/backgrounds/castle-hill.svg" },
-    { "id": "ballroom", "label": "Ballroom", "src": "assets/svg/princess/backgrounds/ballroom.svg" }
+    { "id": "ballroom", "label": "Ballroom", "src": "assets/svg/princess/backgrounds/ballroom.svg" },
+    { "id": "meadow", "label": "Green Field", "src": "assets/svg/princess/backgrounds/meadow.svg" }
   ],
   "elements": [
     { "id": "crown", "label": "Crown", "src": "assets/svg/princess/elements/crown.svg", "defaultWidth": 130, "defaultHeight": 100 },
