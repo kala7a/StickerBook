@@ -44,15 +44,29 @@ StickerBook.Toolbar = (function () {
     const stageRect = stage.getBoundingClientRect();
     const wrapRect = stageWrapEl.getBoundingClientRect();
     const scale = stageRect.width / StickerBook.Canvas.LOGICAL_WIDTH;
-    // Anchored to the sticker's right side (not above it) so it never overlaps
-    // the rotate handle, which lives directly above the sticker.
+    // Anchored to the sticker's side (not above it) so it never overlaps the
+    // rotate handle, which lives directly above the sticker.
     const halfDiagonal =
       (Math.sqrt(stickerData.width * stickerData.width + stickerData.height * stickerData.height) *
         stickerData.scale) /
       2;
-    const left = stageRect.left - wrapRect.left + (stickerData.x + halfDiagonal + 22) * scale;
+    const gap = 12;
+    const toolbarWidth = floatingEl.getBoundingClientRect().width || 54;
+
+    const rightSideX = stageRect.left + (stickerData.x + halfDiagonal + gap) * scale;
+    let leftPx;
+    if (rightSideX + toolbarWidth > wrapRect.right) {
+      // Placing it on the sticker's right would run off the edge of the
+      // canvas (or overlap the side toolbar) — flip to the left side, still
+      // reachable, instead.
+      const leftSideX = stageRect.left + (stickerData.x - halfDiagonal - gap) * scale;
+      leftPx = leftSideX - wrapRect.left - toolbarWidth;
+    } else {
+      leftPx = rightSideX - wrapRect.left;
+    }
+
     const top = stageRect.top - wrapRect.top + stickerData.y * scale;
-    floatingEl.style.left = left + 'px';
+    floatingEl.style.left = leftPx + 'px';
     floatingEl.style.top = Math.max(0, top) + 'px';
   }
 
