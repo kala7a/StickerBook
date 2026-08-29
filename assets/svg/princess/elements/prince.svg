@@ -22,17 +22,17 @@
   <rect x="128" y="106" width="20" height="40" rx="7" fill="#4A6FE3" stroke="#35529C" stroke-width="3"/>
   <rect x="128" y="136" width="20" height="9" fill="#FFD54A"/>
 
-  <path d="M58 144 Q48 158 55 174" stroke="#FFDFC0" stroke-width="9" fill="none" stroke-linecap="round"/>
-  <circle cx="55" cy="177" r="6.5" fill="#FFDFC0"/>
-  <path d="M142 144 Q152 158 145 174" stroke="#FFDFC0" stroke-width="9" fill="none" stroke-linecap="round"/>
-  <circle cx="145" cy="177" r="6.5" fill="#FFDFC0"/>
+  <path d="M58 144 Q52 160 57 174" stroke="#FFDFC0" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <circle cx="57" cy="177" r="7" fill="#FFDFC0"/>
+  <path d="M142 144 Q148 160 143 174" stroke="#FFDFC0" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <circle cx="143" cy="177" r="7" fill="#FFDFC0"/>
 
   <rect x="93" y="98" width="14" height="12" fill="#FFDFC0"/>
 
   <circle cx="100" cy="72" r="30" fill="#FFDFC0"/>
 
-  <path d="M68 58 Q70 24 100 22 Q130 24 132 58 Q132 78 122 84 L118 68 Q100 60 82 68 L78 84 Q68 78 68 58 Z" fill="#4A2F1D"/>
-  <path d="M85 30 Q100 26 115 30 Q108 36 100 34 Q92 36 85 30 Z" fill="#6B4226" opacity="0.8"/>
+  <path d="M74 62 Q76 34 100 32 Q124 34 126 62 Q126 72 118 76 L114 64 Q100 58 86 64 L82 76 Q74 72 74 62 Z" fill="#4A2F1D"/>
+  <path d="M88 38 Q100 34 112 38 Q106 42 100 41 Q94 42 88 38 Z" fill="#6B4226" opacity="0.8"/>
 
   <path d="M82 66 L94 64" stroke="#3A2A1A" stroke-width="3" stroke-linecap="round"/>
   <path d="M106 64 L118 66" stroke="#3A2A1A" stroke-width="3" stroke-linecap="round"/>
