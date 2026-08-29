@@ -1,15 +1,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
   <rect width="800" height="600" fill="#BFE6F5"/>
   <circle cx="680" cy="90" r="55" fill="#FFF3B0"/>
+  <g stroke="#FFF3B0" stroke-width="4" opacity="0.5">
+    <line x1="680" y1="10" x2="680" y2="30"/>
+    <line x1="680" y1="150" x2="680" y2="170"/>
+    <line x1="600" y1="90" x2="620" y2="90"/>
+    <line x1="740" y1="90" x2="760" y2="90"/>
+  </g>
   <ellipse cx="150" cy="110" rx="70" ry="28" fill="#FFFFFF" opacity="0.9"/>
   <ellipse cx="230" cy="130" rx="55" ry="22" fill="#FFFFFF" opacity="0.9"/>
+  <g opacity="0.5">
+    <rect x="600" y="260" width="8" height="120" fill="#C99418"/>
+    <polygon points="560,260 640,260 628,244 572,244" fill="#C99418"/>
+    <line x1="600" y1="270" x2="640" y2="380" stroke="#8A6D1A" stroke-width="2"/>
+  </g>
   <rect y="420" width="800" height="180" fill="#C9A46A"/>
   <rect y="420" width="800" height="14" fill="#B08B52"/>
+  <ellipse cx="200" cy="440" rx="60" ry="12" fill="#B58F55" opacity="0.6"/>
+  <ellipse cx="550" cy="450" rx="80" ry="14" fill="#B58F55" opacity="0.6"/>
   <polygon points="330,420 330,240 470,240 470,420" fill="none" stroke="#8A5A2B" stroke-width="8"/>
   <line x1="330" y1="240" x2="470" y2="420" stroke="#8A5A2B" stroke-width="8"/>
   <line x1="470" y1="240" x2="330" y2="420" stroke="#8A5A2B" stroke-width="8"/>
   <line x1="330" y1="300" x2="470" y2="300" stroke="#8A5A2B" stroke-width="8"/>
   <line x1="330" y1="360" x2="470" y2="360" stroke="#8A5A2B" stroke-width="8"/>
+  <g stroke="#A87844" stroke-width="3" opacity="0.7">
+    <line x1="310" y1="260" x2="310" y2="400"/>
+    <line x1="490" y1="260" x2="490" y2="400"/>
+    <line x1="310" y1="270" x2="330" y2="260"/>
+    <line x1="490" y1="270" x2="470" y2="260"/>
+  </g>
   <polygon points="60,530 100,455 140,530" fill="#F6862C"/>
   <rect x="90" y="500" width="6" height="30" fill="#FFFFFF"/>
   <polygon points="640,530 680,460 720,530" fill="#F6862C"/>

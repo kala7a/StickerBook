@@ -1,13 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <ellipse cx="100" cy="120" rx="65" ry="38" fill="#F5EBDD" stroke="#C9A876" stroke-width="4"/>
-  <path d="M150 95 Q180 80 175 110 Q168 125 150 118" fill="#F5EBDD" stroke="#C9A876" stroke-width="4"/>
-  <ellipse cx="178" cy="98" rx="18" ry="14" fill="#F5EBDD" stroke="#C9A876" stroke-width="4"/>
-  <path d="M188 88 Q198 90 190 100" fill="#F5EBDD" stroke="#C9A876" stroke-width="3"/>
-  <circle cx="184" cy="94" r="2.5" fill="#3A2A20"/>
-  <path d="M100 90 Q120 60 140 90" fill="none" stroke="#7A5230" stroke-width="8" stroke-linecap="round"/>
-  <rect x="55" y="150" width="10" height="35" fill="#F5EBDD" stroke="#C9A876" stroke-width="3"/>
-  <rect x="85" y="150" width="10" height="35" fill="#F5EBDD" stroke="#C9A876" stroke-width="3"/>
-  <rect x="115" y="150" width="10" height="35" fill="#F5EBDD" stroke="#C9A876" stroke-width="3"/>
-  <rect x="140" y="150" width="10" height="35" fill="#F5EBDD" stroke="#C9A876" stroke-width="3"/>
-  <path d="M40 100 Q20 120 35 150" fill="none" stroke="#7A5230" stroke-width="9" stroke-linecap="round"/>
+  <ellipse cx="100" cy="115" rx="68" ry="40" fill="#F5EBDD" stroke="#C9A876" stroke-width="4"/>
+  <path d="M60 95 Q100 78 140 95 L140 118 Q100 108 60 118 Z" fill="#E85B7A" stroke="#C8425F" stroke-width="3"/>
+  <path d="M150 92 Q182 76 176 108 Q168 124 150 116" fill="#F5EBDD" stroke="#C9A876" stroke-width="4"/>
+  <ellipse cx="180" cy="95" rx="19" ry="15" fill="#F5EBDD" stroke="#C9A876" stroke-width="4"/>
+  <path d="M190 85 Q200 88 191 98" fill="#F5EBDD" stroke="#C9A876" stroke-width="3"/>
+  <circle cx="186" cy="91" r="2.5" fill="#3A2A20"/>
+  <ellipse cx="197" cy="98" rx="4" ry="3" fill="#3A2A20" opacity="0.6"/>
+  <path d="M100 88 Q120 55 145 88 Q130 70 115 82 Q105 68 100 88" fill="#7A5230"/>
+  <path d="M35 95 Q15 118 32 150" fill="none" stroke="#7A5230" stroke-width="10" stroke-linecap="round"/>
+  <path d="M35 95 Q20 115 33 142" fill="none" stroke="#9C6B3E" stroke-width="4" stroke-linecap="round"/>
+  <rect x="55" y="148" width="11" height="37" fill="#F5EBDD" stroke="#C9A876" stroke-width="3"/>
+  <rect x="55" y="178" width="11" height="9" fill="#8A6D50"/>
+  <rect x="88" y="148" width="11" height="37" fill="#F5EBDD" stroke="#C9A876" stroke-width="3"/>
+  <rect x="88" y="178" width="11" height="9" fill="#8A6D50"/>
+  <rect x="118" y="148" width="11" height="37" fill="#F5EBDD" stroke="#C9A876" stroke-width="3"/>
+  <rect x="118" y="178" width="11" height="9" fill="#8A6D50"/>
+  <rect x="145" y="148" width="11" height="37" fill="#F5EBDD" stroke="#C9A876" stroke-width="3"/>
+  <rect x="145" y="178" width="11" height="9" fill="#8A6D50"/>
 </svg>
