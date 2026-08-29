@@ -41,6 +41,25 @@ StickerBook.Canvas = (function () {
       const selectedId = StickerBook.Selection.get();
       if (selectedId) StickerBook.Toolbar.updateFloatingPosition(getSticker(selectedId));
     });
+
+    // Drag and pinch-to-resize act on whichever sticker is currently
+    // selected, from anywhere on the canvas — not just touches landing
+    // precisely on that sticker's own (often small) bounding box.
+    StickerBook.Gestures.attachStage(stageEl, getActiveSticker, {
+      onChange: function (active) {
+        StickerBook.Sticker.render(active.wrapperEl, active.data);
+        StickerBook.Toolbar.updateFloatingPosition(active.data);
+      }
+    });
+  }
+
+  function getActiveSticker() {
+    const id = StickerBook.Selection.get();
+    if (!id) return null;
+    const data = getSticker(id);
+    const wrapperEl = stickerEls[id];
+    if (!data || !wrapperEl) return null;
+    return { id: id, data: data, wrapperEl: wrapperEl };
   }
 
   function setBackground(categoryId, bg) {

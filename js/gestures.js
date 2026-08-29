@@ -11,144 +11,9 @@ StickerBook.Gestures = (function () {
     return rect.width / Number(stageEl.dataset.logicalWidth);
   }
 
-  function attach(wrapperEl, data, els, callbacks) {
-    // Tracks every pointer currently down on the sticker body so one finger
-    // drags it and a second finger switches to pinch-to-resize, matching the
-    // standard mobile gesture kids already know.
-    const activePointers = new Map();
-    let mode = null; // 'drag' | 'pinch'
-    let dragState = null;
-    let pinchState = null;
-    let stageSecondFingerListener = null;
-
-    els.body.addEventListener('pointerdown', function (e) {
-      if (e.target === els.resizeHandle || e.target === els.rotateHandle) return;
-      e.preventDefault();
-      callbacks.onSelect(data.id);
-      // Capture keeps move/up events targeting this element even if a fast
-      // finger strays outside its bounds. Setting it can throw in edge cases
-      // (per spec, if the UA no longer considers the pointer active) — that
-      // must never abort tracking this pointer for drag/pinch.
-      try {
-        wrapperEl.setPointerCapture(e.pointerId);
-      } catch (err) {
-        /* ignore */
-      }
-      activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-
-      if (activePointers.size === 1) {
-        beginDrag(e.pointerId);
-        // A sticker is small, so asking a kid to land a *second* finger
-        // inside it too (for pinch-to-resize) is unreliable. Once the first
-        // finger is confirmed on the sticker, accept a second finger
-        // anywhere on the canvas as the pinch partner.
-        listenForSecondFingerOnStage();
-      } else if (activePointers.size === 2) {
-        beginPinch();
-      }
-    });
-
-    function listenForSecondFingerOnStage() {
-      if (stageSecondFingerListener) return;
-      const stage = wrapperEl.closest('.canvas-stage');
-      if (!stage) return;
-      stageSecondFingerListener = function (e) {
-        if (mode !== 'drag' || activePointers.size !== 1 || activePointers.has(e.pointerId)) return;
-        // Don't steal a touch meant for a different sticker or a handle.
-        if (e.target.closest('.sticker-handle')) return;
-        const otherSticker = e.target.closest('.sticker');
-        if (otherSticker && otherSticker !== wrapperEl) return;
-
-        e.preventDefault();
-        // Redirect this pointer's future events to the sticker itself (not
-        // the stage) so the existing body pointermove/pointerup handlers
-        // pick it up no matter where on the canvas it actually landed.
-        try {
-          wrapperEl.setPointerCapture(e.pointerId);
-        } catch (err) {
-          /* ignore */
-        }
-        activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-        beginPinch();
-      };
-      stage.addEventListener('pointerdown', stageSecondFingerListener);
-    }
-
-    function stopListeningForSecondFingerOnStage() {
-      if (!stageSecondFingerListener) return;
-      const stage = wrapperEl.closest('.canvas-stage');
-      if (stage) stage.removeEventListener('pointerdown', stageSecondFingerListener);
-      stageSecondFingerListener = null;
-    }
-
-    els.body.addEventListener('pointermove', function (e) {
-      if (!activePointers.has(e.pointerId)) return;
-      activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-
-      if (mode === 'drag' && activePointers.size === 1) {
-        updateDrag(e);
-      } else if (mode === 'pinch' && activePointers.size === 2) {
-        updatePinch();
-      }
-    });
-
-    els.body.addEventListener('pointerup', endBodyPointer);
-    els.body.addEventListener('pointercancel', endBodyPointer);
-
-    function endBodyPointer(e) {
-      if (!activePointers.has(e.pointerId)) return;
-      activePointers.delete(e.pointerId);
-      if (activePointers.size === 0) {
-        mode = null;
-        dragState = null;
-        pinchState = null;
-        stopListeningForSecondFingerOnStage();
-      } else if (activePointers.size === 1 && mode === 'pinch') {
-        // Dropped from two fingers to one: resume dragging from the
-        // remaining finger's current position so the sticker doesn't jump.
-        const entries = Array.from(activePointers.entries());
-        beginDrag(entries[0][0]);
-      }
-    }
-
-    function beginDrag(pointerId) {
-      mode = 'drag';
-      const pos = activePointers.get(pointerId);
-      const scale = getCanvasScale(wrapperEl.closest('.canvas-stage'));
-      dragState = {
-        pointerId: pointerId,
-        startX: pos.x,
-        startY: pos.y,
-        origX: data.x,
-        origY: data.y,
-        scale: scale
-      };
-    }
-
-    function updateDrag(e) {
-      if (!dragState || e.pointerId !== dragState.pointerId) return;
-      data.x = dragState.origX + (e.clientX - dragState.startX) / dragState.scale;
-      data.y = dragState.origY + (e.clientY - dragState.startY) / dragState.scale;
-      callbacks.onChange(data);
-    }
-
-    function beginPinch() {
-      mode = 'pinch';
-      const pts = Array.from(activePointers.values());
-      pinchState = {
-        startDist: distance(pts[0].x, pts[0].y, pts[1].x, pts[1].y),
-        origScale: data.scale
-      };
-    }
-
-    function updatePinch() {
-      const pts = Array.from(activePointers.values());
-      const dist = distance(pts[0].x, pts[0].y, pts[1].x, pts[1].y);
-      const ratio = pinchState.startDist === 0 ? 1 : dist / pinchState.startDist;
-      data.scale = clamp(pinchState.origScale * ratio, MIN_SCALE, MAX_SCALE);
-      callbacks.onChange(data);
-    }
-
+  // Resize/rotate handles stay precise and per-sticker: a kid reaching for
+  // the small handle circle expects it to affect only that handle.
+  function attachHandles(wrapperEl, data, els, callbacks) {
     els.resizeHandle.addEventListener('pointerdown', function (e) {
       e.stopPropagation();
       startResize(e);
@@ -222,6 +87,131 @@ StickerBook.Gestures = (function () {
     }
   }
 
+  // Drag and pinch-to-resize are handled once at the canvas-stage level for
+  // whichever sticker is currently selected, rather than per-sticker. A
+  // sticker is small on a phone screen, so requiring every finger of a
+  // gesture to land precisely inside it is unreliable; once something is
+  // selected, the whole canvas is its gesture surface until it's
+  // deselected, deleted, or a different sticker is tapped.
+  function attachStage(stageEl, getActive, callbacks) {
+    const activePointers = new Map();
+    let mode = null; // 'drag' | 'pinch'
+    let dragState = null;
+    let pinchState = null;
+    let activeId = null;
+
+    stageEl.addEventListener('pointerdown', function (e) {
+      if (e.target.closest('.sticker-handle')) return;
+
+      if (activePointers.size === 0) {
+        // Fresh gesture: tapping a sticker that isn't the current selection
+        // switches the selection to it (and this same touch starts moving
+        // it). Tapping empty canvas or the already-selected sticker just
+        // continues manipulating whatever is currently selected.
+        const stickerEl = e.target.closest('.sticker');
+        if (stickerEl && stickerEl.dataset.id !== StickerBook.Selection.get()) {
+          StickerBook.Selection.select(stickerEl.dataset.id);
+        }
+        const active = getActive();
+        if (!active) return;
+        activeId = active.id;
+      } else if (activeId === null) {
+        return;
+      }
+
+      const active = getActive();
+      if (!active || active.id !== activeId) return;
+
+      e.preventDefault();
+      try {
+        stageEl.setPointerCapture(e.pointerId);
+      } catch (err) {
+        /* ignore */
+      }
+      activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+      if (activePointers.size === 1) {
+        beginDrag(e.pointerId, active);
+      } else if (activePointers.size === 2) {
+        beginPinch(active);
+      }
+    });
+
+    stageEl.addEventListener('pointermove', function (e) {
+      if (!activePointers.has(e.pointerId)) return;
+      activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+      const active = getActive();
+      if (!active || active.id !== activeId) return;
+
+      if (mode === 'drag' && activePointers.size === 1) {
+        updateDrag(e, active);
+      } else if (mode === 'pinch' && activePointers.size === 2) {
+        updatePinch(active);
+      }
+    });
+
+    stageEl.addEventListener('pointerup', endPointer);
+    stageEl.addEventListener('pointercancel', endPointer);
+
+    function endPointer(e) {
+      if (!activePointers.has(e.pointerId)) return;
+      activePointers.delete(e.pointerId);
+      if (activePointers.size === 0) {
+        mode = null;
+        dragState = null;
+        pinchState = null;
+        activeId = null;
+      } else if (activePointers.size === 1 && mode === 'pinch') {
+        // Dropped from two fingers to one: resume dragging from the
+        // remaining finger's current position so the sticker doesn't jump.
+        const active = getActive();
+        if (active && active.id === activeId) {
+          const entries = Array.from(activePointers.entries());
+          beginDrag(entries[0][0], active);
+        }
+      }
+    }
+
+    function beginDrag(pointerId, active) {
+      mode = 'drag';
+      const pos = activePointers.get(pointerId);
+      const scale = getCanvasScale(stageEl);
+      dragState = {
+        pointerId: pointerId,
+        startX: pos.x,
+        startY: pos.y,
+        origX: active.data.x,
+        origY: active.data.y,
+        scale: scale
+      };
+    }
+
+    function updateDrag(e, active) {
+      if (!dragState || e.pointerId !== dragState.pointerId) return;
+      active.data.x = dragState.origX + (e.clientX - dragState.startX) / dragState.scale;
+      active.data.y = dragState.origY + (e.clientY - dragState.startY) / dragState.scale;
+      callbacks.onChange(active);
+    }
+
+    function beginPinch(active) {
+      mode = 'pinch';
+      const pts = Array.from(activePointers.values());
+      pinchState = {
+        startDist: distance(pts[0].x, pts[0].y, pts[1].x, pts[1].y),
+        origScale: active.data.scale
+      };
+    }
+
+    function updatePinch(active) {
+      const pts = Array.from(activePointers.values());
+      const dist = distance(pts[0].x, pts[0].y, pts[1].x, pts[1].y);
+      const ratio = pinchState.startDist === 0 ? 1 : dist / pinchState.startDist;
+      active.data.scale = clamp(pinchState.origScale * ratio, MIN_SCALE, MAX_SCALE);
+      callbacks.onChange(active);
+    }
+  }
+
   function distance(x1, y1, x2, y2) {
     return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
   }
@@ -234,5 +224,5 @@ StickerBook.Gestures = (function () {
     return Math.max(min, Math.min(max, value));
   }
 
-  return { attach: attach };
+  return { attachHandles: attachHandles, attachStage: attachStage };
 })();
