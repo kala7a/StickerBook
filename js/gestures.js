@@ -199,15 +199,26 @@ StickerBook.Gestures = (function () {
       const pts = Array.from(activePointers.values());
       pinchState = {
         startDist: distance(pts[0].x, pts[0].y, pts[1].x, pts[1].y),
-        origScale: active.data.scale
+        startAngle: angle(pts[1].x, pts[1].y, pts[0].x, pts[0].y),
+        origScale: active.data.scale,
+        origRotation: active.data.rotation
       };
     }
 
+    // A single two-finger gesture drives both scale and rotation at once,
+    // like the standard pinch-to-zoom-and-twist gesture in photo/markup
+    // apps: how far apart the fingers are controls size, the angle between
+    // them controls rotation. The resize/rotate handles remain for finer,
+    // single-axis adjustment.
     function updatePinch(active) {
       const pts = Array.from(activePointers.values());
       const dist = distance(pts[0].x, pts[0].y, pts[1].x, pts[1].y);
       const ratio = pinchState.startDist === 0 ? 1 : dist / pinchState.startDist;
       active.data.scale = clamp(pinchState.origScale * ratio, MIN_SCALE, MAX_SCALE);
+
+      const currentAngle = angle(pts[1].x, pts[1].y, pts[0].x, pts[0].y);
+      active.data.rotation = pinchState.origRotation + (currentAngle - pinchState.startAngle);
+
       callbacks.onChange(active);
     }
   }
