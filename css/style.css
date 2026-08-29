@@ -37,6 +37,13 @@ html, body {
   white-space: nowrap;
 }
 
+.app-version {
+  font-size: 0.65rem;
+  font-weight: normal;
+  color: #aaa;
+  vertical-align: super;
+}
+
 .category-tabs {
   display: flex;
   gap: 8px;
