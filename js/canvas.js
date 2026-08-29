@@ -28,7 +28,10 @@ StickerBook.Canvas = (function () {
       Object.keys(stickerEls).forEach(function (id) {
         stickerEls[id].classList.toggle('selected', id === selectedId);
       });
-      StickerBook.Toolbar.updateFloatingPosition(selectedId ? getSticker(selectedId) : null);
+      StickerBook.Toolbar.updateFloatingPosition(
+        selectedId ? getSticker(selectedId) : null,
+        selectedId ? stickerEls[selectedId] : null
+      );
     });
 
     // The stage's screen size (and therefore its logical-to-screen scale
@@ -39,7 +42,7 @@ StickerBook.Canvas = (function () {
         StickerBook.Sticker.render(stickerEls[s.id], s);
       });
       const selectedId = StickerBook.Selection.get();
-      if (selectedId) StickerBook.Toolbar.updateFloatingPosition(getSticker(selectedId));
+      if (selectedId) StickerBook.Toolbar.updateFloatingPosition(getSticker(selectedId), stickerEls[selectedId]);
     });
 
     // Drag and pinch-to-resize act on whichever sticker is currently
@@ -48,7 +51,7 @@ StickerBook.Canvas = (function () {
     StickerBook.Gestures.attachStage(stageEl, getActiveSticker, {
       onChange: function (active) {
         StickerBook.Sticker.render(active.wrapperEl, active.data);
-        StickerBook.Toolbar.updateFloatingPosition(active.data);
+        StickerBook.Toolbar.updateFloatingPosition(active.data, active.wrapperEl);
       }
     });
   }

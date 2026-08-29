@@ -242,6 +242,18 @@ html, body {
   cursor: nesw-resize;
 }
 
+/* Mirrors the resize handle to the sticker's bottom-right when the floating
+   toolbar has flipped to the sticker's left side, so the two never collide. */
+.sticker.controls-flipped .sticker-handle-resize {
+  left: auto;
+  right: -32px;
+  cursor: nwse-resize;
+}
+
+.sticker.controls-flipped .sticker-handle-resize svg {
+  transform: scaleX(-1);
+}
+
 .sticker-handle-rotate {
   left: 50%;
   top: -46px;
