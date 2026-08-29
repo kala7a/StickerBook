@@ -47,3 +47,7 @@ Reload the page — the new category tab appears automatically.
 
 - Nothing is saved between sessions; closing the tab resets the canvas. Use **Save Picture** to export a PNG before closing.
 - On mobile Safari, saving a picture may open it in a new tab instead of downloading directly — press and hold the image to save it from there.
+
+## Version
+
+The small `vN` next to the title in `index.html` is a manual build counter — bump it by 1 in every PR that changes the app, so you can tell at a glance whether a device (especially a phone that may be showing a cached copy) is on the latest deploy.
