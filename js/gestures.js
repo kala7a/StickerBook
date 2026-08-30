@@ -11,6 +11,39 @@ StickerBook.Gestures = (function () {
     return rect.width / Number(stageEl.dataset.logicalWidth);
   }
 
+  // Where stickers overlap, the topmost one under the finger often isn't the
+  // intended one: reaching for a small sticker regularly lands on the corner
+  // of a bigger one stacked above it. So among every sticker actually under
+  // the point, take the one whose centre is nearest — aiming at a sticker's
+  // middle then beats clipping another's edge, whatever the stacking order.
+  // getBoundingClientRect() is the axis-aligned box of the already-transformed
+  // sticker, and rotation/scale are applied about its own centre, so the box's
+  // midpoint is the sticker's true on-screen centre.
+  function pickStickerAt(stageEl, clientX, clientY) {
+    const candidates = [];
+    document.elementsFromPoint(clientX, clientY).forEach(function (el) {
+      const sticker = el.closest ? el.closest('.sticker') : null;
+      if (sticker && stageEl.contains(sticker) && candidates.indexOf(sticker) === -1) {
+        candidates.push(sticker);
+      }
+    });
+    if (candidates.length < 2) return candidates[0] || null;
+
+    // elementsFromPoint is ordered topmost-first, and a strict < keeps that
+    // one ahead when two centres are equidistant.
+    let best = candidates[0];
+    let bestDist = Infinity;
+    candidates.forEach(function (el) {
+      const rect = el.getBoundingClientRect();
+      const dist = distance(clientX, clientY, rect.left + rect.width / 2, rect.top + rect.height / 2);
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = el;
+      }
+    });
+    return best;
+  }
+
   // Resize/rotate handles stay precise and per-sticker: a kid reaching for
   // the small handle circle expects it to affect only that handle.
   function attachHandles(wrapperEl, data, els, callbacks) {
@@ -112,7 +145,7 @@ StickerBook.Gestures = (function () {
         if (!currentSelection) {
           // Nothing selected yet, so there's nothing to accidentally
           // interrupt — tapping a sticker selects it immediately.
-          const stickerEl = e.target.closest('.sticker');
+          const stickerEl = pickStickerAt(stageEl, e.clientX, e.clientY);
           if (stickerEl) StickerBook.Selection.select(stickerEl.dataset.id);
         }
 
