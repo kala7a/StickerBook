@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="420" fill="#BEE7F7"/>
+  <circle cx="120" cy="90" r="55" fill="#FFF3B0"/>
+  <g stroke="#FFF3B0" stroke-width="4" opacity="0.6">
+    <line x1="120" y1="10" x2="120" y2="30"/>
+    <line x1="120" y1="150" x2="120" y2="170"/>
+    <line x1="40" y1="90" x2="60" y2="90"/>
+    <line x1="180" y1="90" x2="200" y2="90"/>
+  </g>
+  <ellipse cx="600" cy="80" rx="65" ry="26" fill="#FFFFFF" opacity="0.9"/>
+  <ellipse cx="680" cy="100" rx="50" ry="20" fill="#FFFFFF" opacity="0.9"/>
+
+  <path d="M0 420 Q400 380 800 420 L800 600 L0 600 Z" fill="#9BD671"/>
+  <path d="M0 450 Q400 410 800 450 L800 600 L0 600 Z" fill="#7ED957"/>
+
+  <path d="M60 300 Q400 260 740 300" fill="none" stroke="#8A5A2B" stroke-width="4"/>
+  <path d="M100 302 L130 302 L115 350 Z" fill="#EC5B8C" stroke="#B8324A" stroke-width="3"/>
+  <path d="M170 300 L200 300 L185 348 Z" fill="#FFD54A" stroke="#E8A83A" stroke-width="3"/>
+  <path d="M240 298 L270 298 L255 346 Z" fill="#4FC3E8" stroke="#3AA8CC" stroke-width="3"/>
+  <path d="M310 296 L340 296 L325 344 Z" fill="#7ED957" stroke="#5CAE3C" stroke-width="3"/>
+  <path d="M380 296 L410 296 L395 344 Z" fill="#EC5B8C" stroke="#B8324A" stroke-width="3"/>
+  <path d="M450 296 L480 296 L465 344 Z" fill="#FFD54A" stroke="#E8A83A" stroke-width="3"/>
+  <path d="M520 298 L550 298 L535 346 Z" fill="#4FC3E8" stroke="#3AA8CC" stroke-width="3"/>
+  <path d="M590 300 L620 300 L605 348 Z" fill="#7ED957" stroke="#5CAE3C" stroke-width="3"/>
+  <path d="M660 302 L690 302 L675 350 Z" fill="#EC5B8C" stroke="#B8324A" stroke-width="3"/>
+
+  <g>
+    <ellipse cx="130" cy="470" rx="10" ry="14" fill="#F26FA6" opacity="0.9" transform="rotate(-20 130 470)"/>
+    <ellipse cx="146" cy="470" rx="10" ry="14" fill="#F26FA6" opacity="0.9" transform="rotate(20 146 470)"/>
+    <line x1="138" y1="462" x2="138" y2="480" stroke="#8A5A2B" stroke-width="2"/>
+  </g>
+  <g>
+    <ellipse cx="660" cy="500" rx="9" ry="12" fill="#FFD54A" opacity="0.9" transform="rotate(-20 660 500)"/>
+    <ellipse cx="674" cy="500" rx="9" ry="12" fill="#FFD54A" opacity="0.9" transform="rotate(20 674 500)"/>
+    <line x1="667" y1="493" x2="667" y2="510" stroke="#8A5A2B" stroke-width="2"/>
+  </g>
+
+  <rect x="350" y="500" width="100" height="70" rx="6" fill="#FFFFFF" stroke="#E2E2E2" stroke-width="4"/>
+  <path d="M340 500 L460 500 L440 470 L360 470 Z" fill="#F26FA6" stroke="#B8324A" stroke-width="4"/>
+</svg>
