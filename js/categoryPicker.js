@@ -20,7 +20,9 @@ StickerBook.CategoryPicker = (function () {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'category-tab';
-      btn.textContent = cat.label;
+      btn.title = cat.label;
+      btn.setAttribute('aria-label', cat.label);
+      btn.innerHTML = '<img src="' + cat.icon + '" alt="">';
       btn.dataset.categoryId = cat.id;
       btn.addEventListener('click', function () {
         selectCategory(cat.id);

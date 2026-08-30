@@ -31,10 +31,18 @@ html, body {
 }
 
 .app-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 1.15rem;
   margin: 0;
   color: #444;
   white-space: nowrap;
+}
+
+.app-logo {
+  font-size: 1.3rem;
+  line-height: 1;
 }
 
 .app-version {
@@ -50,20 +58,34 @@ html, body {
   flex-wrap: wrap;
 }
 
+/* Icon-only tabs (see categoryPicker.js) keep the UI language-free and easy
+   for pre-reading kids to navigate; the category label still lives in
+   title/aria-label for a tooltip and screen readers. */
 .category-tab {
-  min-height: 44px;
-  padding: 6px 18px;
-  border-radius: 22px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 7px;
+  border-radius: 12px;
   border: 2px solid #ddd;
   background: #fff;
-  font-size: 1rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-tab img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
 }
 
 .category-tab.active {
   background: #ffd54a;
   border-color: #e8a83a;
-  font-weight: bold;
 }
 
 .app-body {
@@ -367,19 +389,39 @@ html, body {
    the same side-by-side layout as the desktop breakpoint above so the tray
    (backgrounds/stickers) sits on the left and the canvas keeps the rest of
    the width on the right, instead of stacking and squeezing the canvas into
-   a sliver of the limited height. */
+   a sliver of the limited height. The app name and category tabs move from
+   a horizontal bar above everything into a narrow column at the far left,
+   flush with the tray, so none of the limited height is spent on a header. */
 @media (orientation: landscape) and (max-height: 500px) {
-  .app-header {
-    padding: 4px 10px;
+  .app {
+    flex-direction: row;
   }
 
-  .app-title {
-    font-size: 1rem;
+  .app-header {
+    flex-direction: column;
+    width: 60px;
+    flex: 0 0 60px;
+    padding: 8px 6px;
+    gap: 10px;
+    border-bottom: none;
+    border-right: 2px solid #ececec;
+    overflow-y: auto;
+  }
+
+  .app-title-text,
+  .app-version {
+    display: none;
+  }
+
+  .category-tabs {
+    flex-direction: column;
   }
 
   .category-tab {
-    min-height: 36px;
-    padding: 4px 14px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
   }
 
   .app-body {
