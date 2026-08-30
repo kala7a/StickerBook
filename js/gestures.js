@@ -44,6 +44,19 @@ StickerBook.Gestures = (function () {
     return best;
   }
 
+  // Dragging a sticker clear of the drawing area is how it gets thrown
+  // away. Sticker coordinates are already in the stage's own logical space,
+  // so "off the page" is just its centre leaving those bounds — once the
+  // centre is out, more than half the sticker is off the drawing anyway.
+  function isOutsideStage(stageEl, data) {
+    return (
+      data.x < 0 ||
+      data.y < 0 ||
+      data.x > Number(stageEl.dataset.logicalWidth) ||
+      data.y > Number(stageEl.dataset.logicalHeight)
+    );
+  }
+
   // Resize/rotate handles stay precise and per-sticker: a kid reaching for
   // the small handle circle expects it to affect only that handle.
   function attachHandles(wrapperEl, data, els, callbacks) {
@@ -196,10 +209,21 @@ StickerBook.Gestures = (function () {
       activePointers.delete(e.pointerId);
 
       if (activePointers.size === 0) {
+        const active = getActive();
         mode = null;
         dragState = null;
         pinchState = null;
         activeId = null;
+
+        if (active) {
+          active.wrapperEl.classList.remove('will-remove');
+          // Only letting go throws the sticker away. A cancelled pointer
+          // (an interrupting system gesture) isn't a decision to delete,
+          // so the sticker is left where it is.
+          if (e.type === 'pointerup' && isOutsideStage(stageEl, active.data)) {
+            callbacks.onRemove(active.id);
+          }
+        }
       } else if (activePointers.size === 1 && mode === 'pinch') {
         // Dropped from two fingers to one: resume dragging from the
         // remaining finger's current position so the sticker doesn't jump.
@@ -229,6 +253,10 @@ StickerBook.Gestures = (function () {
       if (!dragState || e.pointerId !== dragState.pointerId) return;
       active.data.x = dragState.origX + (e.clientX - dragState.startX) / dragState.scale;
       active.data.y = dragState.origY + (e.clientY - dragState.startY) / dragState.scale;
+      // Fade the sticker while it's over the discard zone so a pending
+      // delete is always visible, and can be undone by dragging back in
+      // before letting go.
+      active.wrapperEl.classList.toggle('will-remove', isOutsideStage(stageEl, active.data));
       callbacks.onChange(active);
     }
 
