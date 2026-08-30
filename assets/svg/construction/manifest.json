@@ -3,7 +3,9 @@
   "label": "Construction",
   "backgrounds": [
     { "id": "worksite", "label": "Worksite", "src": "assets/svg/construction/backgrounds/worksite.svg" },
-    { "id": "road", "label": "Road", "src": "assets/svg/construction/backgrounds/road.svg" }
+    { "id": "road", "label": "Road", "src": "assets/svg/construction/backgrounds/road.svg" },
+    { "id": "bridge", "label": "Bridge", "src": "assets/svg/construction/backgrounds/bridge.svg" },
+    { "id": "quarry", "label": "Quarry", "src": "assets/svg/construction/backgrounds/quarry.svg" }
   ],
   "elements": [
     { "id": "dump-truck", "label": "Dump Truck", "src": "assets/svg/construction/elements/dump-truck.svg", "defaultWidth": 170, "defaultHeight": 120 },
@@ -13,6 +15,18 @@
     { "id": "house-frame", "label": "House Frame", "src": "assets/svg/construction/elements/house-frame.svg", "defaultWidth": 170, "defaultHeight": 150 },
     { "id": "digger", "label": "Digger", "src": "assets/svg/construction/elements/digger.svg", "defaultWidth": 170, "defaultHeight": 130 },
     { "id": "cement-mixer", "label": "Cement Mixer", "src": "assets/svg/construction/elements/cement-mixer.svg", "defaultWidth": 170, "defaultHeight": 130 },
-    { "id": "barrier", "label": "Barrier", "src": "assets/svg/construction/elements/barrier.svg", "defaultWidth": 150, "defaultHeight": 90 }
+    { "id": "barrier", "label": "Barrier", "src": "assets/svg/construction/elements/barrier.svg", "defaultWidth": 150, "defaultHeight": 90 },
+    { "id": "bulldozer", "label": "Bulldozer", "src": "assets/svg/construction/elements/bulldozer.svg", "defaultWidth": 170, "defaultHeight": 130 },
+    { "id": "forklift", "label": "Forklift", "src": "assets/svg/construction/elements/forklift.svg", "defaultWidth": 170, "defaultHeight": 130 },
+    { "id": "wheelbarrow", "label": "Wheelbarrow", "src": "assets/svg/construction/elements/wheelbarrow.svg", "defaultWidth": 150, "defaultHeight": 140 },
+    { "id": "toolbox", "label": "Toolbox", "src": "assets/svg/construction/elements/toolbox.svg", "defaultWidth": 150, "defaultHeight": 120 },
+    { "id": "hammer", "label": "Hammer", "src": "assets/svg/construction/elements/hammer.svg", "defaultWidth": 130, "defaultHeight": 150 },
+    { "id": "ladder", "label": "Ladder", "src": "assets/svg/construction/elements/ladder.svg", "defaultWidth": 130, "defaultHeight": 170 },
+    { "id": "brick-stack", "label": "Bricks", "src": "assets/svg/construction/elements/brick-stack.svg", "defaultWidth": 150, "defaultHeight": 100 },
+    { "id": "safety-vest", "label": "Safety Vest", "src": "assets/svg/construction/elements/safety-vest.svg", "defaultWidth": 130, "defaultHeight": 150 },
+    { "id": "traffic-light", "label": "Traffic Light", "src": "assets/svg/construction/elements/traffic-light.svg", "defaultWidth": 100, "defaultHeight": 170 },
+    { "id": "drill", "label": "Drill", "src": "assets/svg/construction/elements/drill.svg", "defaultWidth": 160, "defaultHeight": 150 },
+    { "id": "road-roller", "label": "Road Roller", "src": "assets/svg/construction/elements/road-roller.svg", "defaultWidth": 160, "defaultHeight": 150 },
+    { "id": "blueprint", "label": "Blueprint", "src": "assets/svg/construction/elements/blueprint.svg", "defaultWidth": 140, "defaultHeight": 140 }
   ]
 }
