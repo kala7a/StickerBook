@@ -11,6 +11,12 @@
       "label": "Construction",
       "icon": "assets/svg/construction/elements/dump-truck.svg",
       "manifest": "assets/svg/construction/manifest.json"
+    },
+    {
+      "id": "party",
+      "label": "Party",
+      "icon": "assets/svg/party/elements/balloons.svg",
+      "manifest": "assets/svg/party/manifest.json"
     }
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "id": "party",
+  "label": "Party",
+  "backgrounds": [
+    { "id": "party-room", "label": "Party Room", "src": "assets/svg/party/backgrounds/party-room.svg" },
+    { "id": "backyard-party", "label": "Backyard Party", "src": "assets/svg/party/backgrounds/backyard-party.svg" }
+  ],
+  "elements": [
+    { "id": "balloons", "label": "Balloons", "src": "assets/svg/party/elements/balloons.svg", "defaultWidth": 130, "defaultHeight": 140 },
+    { "id": "cake", "label": "Cake", "src": "assets/svg/party/elements/cake.svg", "defaultWidth": 150, "defaultHeight": 150 },
+    { "id": "party-hat", "label": "Party Hat", "src": "assets/svg/party/elements/party-hat.svg", "defaultWidth": 110, "defaultHeight": 150 },
+    { "id": "gift", "label": "Gift", "src": "assets/svg/party/elements/gift.svg", "defaultWidth": 140, "defaultHeight": 130 },
+    { "id": "cupcake", "label": "Cupcake", "src": "assets/svg/party/elements/cupcake.svg", "defaultWidth": 140, "defaultHeight": 140 },
+    { "id": "banner", "label": "Banner", "src": "assets/svg/party/elements/banner.svg", "defaultWidth": 170, "defaultHeight": 110 },
+    { "id": "confetti-popper", "label": "Popper", "src": "assets/svg/party/elements/confetti-popper.svg", "defaultWidth": 150, "defaultHeight": 150 },
+    { "id": "noisemaker", "label": "Noisemaker", "src": "assets/svg/party/elements/noisemaker.svg", "defaultWidth": 170, "defaultHeight": 130 }
+  ]
+}
