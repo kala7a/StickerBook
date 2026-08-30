@@ -4,7 +4,8 @@
   "backgrounds": [
     { "id": "castle-hill", "label": "Castle Hill", "src": "assets/svg/princess/backgrounds/castle-hill.svg" },
     { "id": "ballroom", "label": "Ballroom", "src": "assets/svg/princess/backgrounds/ballroom.svg" },
-    { "id": "meadow", "label": "Green Field", "src": "assets/svg/princess/backgrounds/meadow.svg" }
+    { "id": "meadow", "label": "Green Field", "src": "assets/svg/princess/backgrounds/meadow.svg" },
+    { "id": "starry-castle", "label": "Starry Castle", "src": "assets/svg/princess/backgrounds/starry-castle.svg" }
   ],
   "elements": [
     { "id": "crown", "label": "Crown", "src": "assets/svg/princess/elements/crown.svg", "defaultWidth": 130, "defaultHeight": 100 },
@@ -15,6 +16,17 @@
     { "id": "horse", "label": "Horse", "src": "assets/svg/princess/elements/horse.svg", "defaultWidth": 170, "defaultHeight": 130 },
     { "id": "tiara", "label": "Tiara", "src": "assets/svg/princess/elements/tiara.svg", "defaultWidth": 110, "defaultHeight": 80 },
     { "id": "carriage", "label": "Carriage", "src": "assets/svg/princess/elements/carriage.svg", "defaultWidth": 170, "defaultHeight": 130 },
-    { "id": "rose", "label": "Rose", "src": "assets/svg/princess/elements/rose.svg", "defaultWidth": 90, "defaultHeight": 150 }
+    { "id": "rose", "label": "Rose", "src": "assets/svg/princess/elements/rose.svg", "defaultWidth": 90, "defaultHeight": 150 },
+    { "id": "unicorn", "label": "Unicorn", "src": "assets/svg/princess/elements/unicorn.svg", "defaultWidth": 170, "defaultHeight": 170 },
+    { "id": "throne", "label": "Throne", "src": "assets/svg/princess/elements/throne.svg", "defaultWidth": 140, "defaultHeight": 150 },
+    { "id": "glass-slipper", "label": "Glass Slipper", "src": "assets/svg/princess/elements/glass-slipper.svg", "defaultWidth": 140, "defaultHeight": 120 },
+    { "id": "magic-mirror", "label": "Magic Mirror", "src": "assets/svg/princess/elements/magic-mirror.svg", "defaultWidth": 130, "defaultHeight": 150 },
+    { "id": "butterfly", "label": "Butterfly", "src": "assets/svg/princess/elements/butterfly.svg", "defaultWidth": 150, "defaultHeight": 130 },
+    { "id": "fairy", "label": "Fairy", "src": "assets/svg/princess/elements/fairy.svg", "defaultWidth": 140, "defaultHeight": 160 },
+    { "id": "swan", "label": "Swan", "src": "assets/svg/princess/elements/swan.svg", "defaultWidth": 160, "defaultHeight": 140 },
+    { "id": "flower-bouquet", "label": "Flowers", "src": "assets/svg/princess/elements/flower-bouquet.svg", "defaultWidth": 140, "defaultHeight": 150 },
+    { "id": "jewel", "label": "Jewel", "src": "assets/svg/princess/elements/jewel.svg", "defaultWidth": 130, "defaultHeight": 130 },
+    { "id": "scepter", "label": "Scepter", "src": "assets/svg/princess/elements/scepter.svg", "defaultWidth": 100, "defaultHeight": 160 },
+    { "id": "gazebo", "label": "Gazebo", "src": "assets/svg/princess/elements/gazebo.svg", "defaultWidth": 160, "defaultHeight": 160 }
   ]
 }

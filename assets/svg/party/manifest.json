@@ -3,7 +3,9 @@
   "label": "Party",
   "backgrounds": [
     { "id": "party-room", "label": "Party Room", "src": "assets/svg/party/backgrounds/party-room.svg" },
-    { "id": "backyard-party", "label": "Backyard Party", "src": "assets/svg/party/backgrounds/backyard-party.svg" }
+    { "id": "backyard-party", "label": "Backyard Party", "src": "assets/svg/party/backgrounds/backyard-party.svg" },
+    { "id": "carnival", "label": "Carnival", "src": "assets/svg/party/backgrounds/carnival.svg" },
+    { "id": "pool-party", "label": "Pool Party", "src": "assets/svg/party/backgrounds/pool-party.svg" }
   ],
   "elements": [
     { "id": "balloons", "label": "Balloons", "src": "assets/svg/party/elements/balloons.svg", "defaultWidth": 130, "defaultHeight": 140 },
@@ -13,6 +15,18 @@
     { "id": "cupcake", "label": "Cupcake", "src": "assets/svg/party/elements/cupcake.svg", "defaultWidth": 140, "defaultHeight": 140 },
     { "id": "banner", "label": "Banner", "src": "assets/svg/party/elements/banner.svg", "defaultWidth": 170, "defaultHeight": 110 },
     { "id": "confetti-popper", "label": "Popper", "src": "assets/svg/party/elements/confetti-popper.svg", "defaultWidth": 150, "defaultHeight": 150 },
-    { "id": "noisemaker", "label": "Noisemaker", "src": "assets/svg/party/elements/noisemaker.svg", "defaultWidth": 170, "defaultHeight": 130 }
+    { "id": "noisemaker", "label": "Noisemaker", "src": "assets/svg/party/elements/noisemaker.svg", "defaultWidth": 170, "defaultHeight": 130 },
+    { "id": "candle", "label": "Candle", "src": "assets/svg/party/elements/candle.svg", "defaultWidth": 100, "defaultHeight": 160 },
+    { "id": "lollipop", "label": "Lollipop", "src": "assets/svg/party/elements/lollipop.svg", "defaultWidth": 130, "defaultHeight": 170 },
+    { "id": "ice-cream", "label": "Ice Cream", "src": "assets/svg/party/elements/ice-cream.svg", "defaultWidth": 130, "defaultHeight": 160 },
+    { "id": "cookie", "label": "Cookie", "src": "assets/svg/party/elements/cookie.svg", "defaultWidth": 140, "defaultHeight": 140 },
+    { "id": "juice-box", "label": "Juice Box", "src": "assets/svg/party/elements/juice-box.svg", "defaultWidth": 110, "defaultHeight": 150 },
+    { "id": "pinata", "label": "Pinata", "src": "assets/svg/party/elements/pinata.svg", "defaultWidth": 140, "defaultHeight": 160 },
+    { "id": "streamers-roll", "label": "Streamers", "src": "assets/svg/party/elements/streamers-roll.svg", "defaultWidth": 160, "defaultHeight": 160 },
+    { "id": "donut", "label": "Donut", "src": "assets/svg/party/elements/donut.svg", "defaultWidth": 150, "defaultHeight": 150 },
+    { "id": "macaron", "label": "Macaron", "src": "assets/svg/party/elements/macaron.svg", "defaultWidth": 160, "defaultHeight": 130 },
+    { "id": "ribbon-bow", "label": "Ribbon", "src": "assets/svg/party/elements/ribbon-bow.svg", "defaultWidth": 160, "defaultHeight": 150 },
+    { "id": "party-mask", "label": "Mask", "src": "assets/svg/party/elements/party-mask.svg", "defaultWidth": 160, "defaultHeight": 120 },
+    { "id": "gumball-machine", "label": "Gumballs", "src": "assets/svg/party/elements/gumball-machine.svg", "defaultWidth": 140, "defaultHeight": 160 }
   ]
 }
