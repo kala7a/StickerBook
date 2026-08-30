@@ -63,6 +63,7 @@ StickerBook.ExportPng = (function () {
           ctx.save();
           ctx.translate(s.x * scaleX, s.y * scaleY);
           ctx.rotate((s.rotation * Math.PI) / 180);
+          if (s.mirrored) ctx.scale(-1, 1);
           ctx.drawImage(img, -w / 2, -h / 2, w, h);
           ctx.restore();
         }

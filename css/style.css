@@ -334,6 +334,11 @@ html, body {
   font-weight: bold;
 }
 
+#btn-flip.active {
+  background: #ffd54a;
+  border-color: #e8a83a;
+}
+
 .side-toolbar {
   display: flex;
   align-items: center;

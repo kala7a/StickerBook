@@ -12,6 +12,7 @@ window.StickerBook = window.StickerBook || {};
       done: document.getElementById('btn-done'),
       front: document.getElementById('btn-front'),
       back: document.getElementById('btn-back'),
+      flip: document.getElementById('btn-flip'),
       delete: document.getElementById('btn-delete'),
       export: document.getElementById('btn-export'),
       newDrawing: document.getElementById('btn-new'),
