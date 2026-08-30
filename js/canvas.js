@@ -84,6 +84,7 @@ StickerBook.Canvas = (function () {
       y: LOGICAL_HEIGHT / 2 + offset,
       scale: 1,
       rotation: 0,
+      mirrored: false,
       z: state.nextZ++,
       width: element.defaultWidth,
       height: element.defaultHeight
@@ -131,6 +132,13 @@ StickerBook.Canvas = (function () {
     state.nextZ = 1;
   }
 
+  function toggleFlip(id) {
+    const data = getSticker(id);
+    if (!data) return;
+    data.mirrored = !data.mirrored;
+    StickerBook.Sticker.render(stickerEls[id], data);
+  }
+
   function bringToFront(id) {
     reorder(id, true);
   }
@@ -168,6 +176,7 @@ StickerBook.Canvas = (function () {
     removeSticker: removeSticker,
     clearStickers: clearStickers,
     getSticker: getSticker,
+    toggleFlip: toggleFlip,
     bringToFront: bringToFront,
     sendToBack: sendToBack,
     getState: getState,

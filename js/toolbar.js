@@ -1,11 +1,12 @@
 window.StickerBook = window.StickerBook || {};
 
 StickerBook.Toolbar = (function () {
-  let floatingEl, stageWrapEl;
+  let floatingEl, stageWrapEl, flipEl;
 
   function init(els) {
     floatingEl = els.floating;
     stageWrapEl = els.stageWrap;
+    flipEl = els.flip;
 
     els.done.addEventListener('click', function () {
       StickerBook.Selection.clear();
@@ -17,6 +18,13 @@ StickerBook.Toolbar = (function () {
     els.back.addEventListener('click', function () {
       const id = StickerBook.Selection.get();
       if (id) StickerBook.Canvas.sendToBack(id);
+    });
+    els.flip.addEventListener('click', function () {
+      const id = StickerBook.Selection.get();
+      if (id) {
+        StickerBook.Canvas.toggleFlip(id);
+        flipEl.classList.toggle('active', StickerBook.Canvas.getSticker(id).mirrored);
+      }
     });
     els.delete.addEventListener('click', function () {
       const id = StickerBook.Selection.get();
@@ -40,6 +48,7 @@ StickerBook.Toolbar = (function () {
       return;
     }
     floatingEl.hidden = false;
+    flipEl.classList.toggle('active', !!stickerData.mirrored);
     const stage = StickerBook.Canvas.getStageEl();
     const stageRect = stage.getBoundingClientRect();
     const wrapRect = stageWrapEl.getBoundingClientRect();

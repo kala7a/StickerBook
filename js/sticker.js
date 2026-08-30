@@ -68,6 +68,13 @@ StickerBook.Sticker = (function () {
     const ty = data.y * scale - h / 2;
     wrapper.style.transform =
       'translate(' + tx + 'px,' + ty + 'px) rotate(' + data.rotation + 'deg) scale(' + data.scale + ')';
+
+    // The mirror only affects the artwork itself, not the wrapper — flipping
+    // the wrapper would also mirror the resize/rotate handles' positions and
+    // confuse their drag math, which assumes an unflipped local coordinate
+    // space.
+    const img = wrapper.querySelector('.sticker-image');
+    if (img) img.style.transform = data.mirrored ? 'scaleX(-1)' : '';
   }
 
   return { createStickerElement: createStickerElement, render: render };
