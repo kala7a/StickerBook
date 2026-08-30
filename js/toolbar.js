@@ -51,7 +51,9 @@ StickerBook.Toolbar = (function () {
         stickerData.scale) /
       2;
     const gap = 12;
-    const toolbarWidth = floatingEl.getBoundingClientRect().width || 54;
+    const toolbarRect = floatingEl.getBoundingClientRect();
+    const toolbarWidth = toolbarRect.width || 54;
+    const toolbarHeight = toolbarRect.height || 198;
 
     const rightSideX = stageRect.left + (stickerData.x + halfDiagonal + gap) * scale;
     const flipped = rightSideX + toolbarWidth > wrapRect.right;
@@ -66,9 +68,20 @@ StickerBook.Toolbar = (function () {
       leftPx = rightSideX - wrapRect.left;
     }
 
-    const top = stageRect.top - wrapRect.top + stickerData.y * scale;
+    // The toolbar is vertically centered on the sticker via a CSS
+    // translateY(-50%), so a sticker near the canvas's top or bottom edge
+    // would otherwise push half the toolbar (often the Done button) out of
+    // view — clamping the *raw* top to >=0 isn't enough since it ignores
+    // that -50% shift. Clamping the center itself by half the toolbar's own
+    // measured height keeps the whole toolbar on screen at every position,
+    // same as the left/right flip above does for width.
+    let top = stageRect.top - wrapRect.top + stickerData.y * scale;
+    const minTop = toolbarHeight / 2;
+    const maxTop = wrapRect.height - toolbarHeight / 2;
+    top = maxTop >= minTop ? Math.max(minTop, Math.min(top, maxTop)) : wrapRect.height / 2;
+
     floatingEl.style.left = leftPx + 'px';
-    floatingEl.style.top = Math.max(0, top) + 'px';
+    floatingEl.style.top = top + 'px';
 
     // The resize handle normally sits at the sticker's bottom-left specifically
     // to stay clear of this toolbar on the right — so when the toolbar flips
