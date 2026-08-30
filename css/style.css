@@ -237,6 +237,17 @@ html, body {
   border-radius: 6px;
 }
 
+/* Dragged clear of the drawing area, so letting go here deletes it. Fading
+   it and turning the outline red makes the pending delete obvious while
+   there's still time to drag it back onto the page. */
+.sticker.will-remove {
+  opacity: 0.4;
+}
+
+.sticker.selected.will-remove {
+  outline-color: #e23b5e;
+}
+
 .sticker-handle {
   display: none;
   position: absolute;

@@ -52,6 +52,10 @@ StickerBook.Canvas = (function () {
       onChange: function (active) {
         StickerBook.Sticker.render(active.wrapperEl, active.data);
         StickerBook.Toolbar.updateFloatingPosition(active.data, active.wrapperEl);
+      },
+      // Dragging a sticker off the drawing and letting go throws it away.
+      onRemove: function (id) {
+        removeSticker(id);
       }
     });
   }

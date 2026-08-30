@@ -1,6 +1,6 @@
 # StickerBook
 
-A simple sticker/drawing app for kids. Pick a background, tap stickers onto it, then drag, resize, rotate, and layer them. Works on phone and PC. Save the finished picture as a PNG.
+A simple sticker/drawing app for kids. Pick a background, tap stickers onto it, then drag, resize, rotate, and layer them. Drag a sticker off the drawing and let go to throw it away. Works on phone and PC. Save the finished picture as a PNG.
 
 No build step, no external libraries — plain HTML, CSS, and JavaScript.
 
